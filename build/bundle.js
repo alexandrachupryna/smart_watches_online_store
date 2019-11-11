@@ -99,7 +99,7 @@ getListOfGoods();
 function getListOfGoods() {
   try {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://5dc13cd095f4b90014ddcf52.mockapi.io/goods');
+    xhr.open('GET', 'https://5dc13cd095f4b90014ddcf52.mockapi.io/goods');
     xhr.responseType = 'json';
     xhr.send();
 
@@ -114,7 +114,6 @@ function getListOfGoods() {
       var goodsItemForm = document.getElementById('goodsItemForm');
       goodsItemForm.addEventListener('submit', submitCreateForm);
       var changeItemButtons = document.querySelectorAll('.changeItem');
-      console.log(changeItemButtons);
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
@@ -245,7 +244,7 @@ function submitCreateForm(e) {
     'available': available,
     'price': price
   });
-  xhr.open("POST", 'http://5dc13cd095f4b90014ddcf52.mockapi.io/goods');
+  xhr.open("POST", 'https://5dc13cd095f4b90014ddcf52.mockapi.io/goods');
   xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
   xhr.send(json);
 
@@ -310,7 +309,7 @@ function submitChangeForm(e) {
     'available': available,
     'price': price
   });
-  xhr.open("PUT", "http://5dc13cd095f4b90014ddcf52.mockapi.io/goods/".concat(id));
+  xhr.open("PUT", "https://5dc13cd095f4b90014ddcf52.mockapi.io/goods/".concat(id));
   xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
   xhr.send(json);
 
@@ -322,7 +321,7 @@ function submitChangeForm(e) {
 function deleteItem() {
   var id = $(this).closest('tr').find(".col_id").text();
   var xhr = new XMLHttpRequest();
-  xhr.open("DELETE", "http://5dc13cd095f4b90014ddcf52.mockapi.io/goods/".concat(id));
+  xhr.open("DELETE", "https://5dc13cd095f4b90014ddcf52.mockapi.io/goods/".concat(id));
   xhr.send();
 
   xhr.onload = function () {
