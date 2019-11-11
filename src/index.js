@@ -6,7 +6,7 @@ function getListOfGoods() {
     try {
         let xhr = new XMLHttpRequest();
 
-        xhr.open('GET', 'http://5dc13cd095f4b90014ddcf52.mockapi.io/goods');
+        xhr.open('GET', 'https://5dc13cd095f4b90014ddcf52.mockapi.io/goods');
 
         xhr.responseType = 'json';
 
@@ -94,7 +94,7 @@ function submitCreateForm(e) {
         'price': price
     });
 
-    xhr.open("POST", 'http://5dc13cd095f4b90014ddcf52.mockapi.io/goods')
+    xhr.open("POST", 'https://5dc13cd095f4b90014ddcf52.mockapi.io/goods')
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.send(json);
     xhr.onload = () => getListOfGoods(); 
@@ -137,7 +137,7 @@ function submitChangeForm(e) {
         'price': price
     });
 
-    xhr.open("PUT", `http://5dc13cd095f4b90014ddcf52.mockapi.io/goods/${id}`);
+    xhr.open("PUT", `https://5dc13cd095f4b90014ddcf52.mockapi.io/goods/${id}`);
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.send(json);
     xhr.onload = () => getListOfGoods(); 
@@ -146,7 +146,7 @@ function submitChangeForm(e) {
 function deleteItem() {
     const id = $(this).closest('tr').find(".col_id").text();
     let xhr = new XMLHttpRequest();
-    xhr.open("DELETE", `http://5dc13cd095f4b90014ddcf52.mockapi.io/goods/${id}`);
+    xhr.open("DELETE", `https://5dc13cd095f4b90014ddcf52.mockapi.io/goods/${id}`);
     xhr.send();
     xhr.onload = () => getListOfGoods(); 
 }
