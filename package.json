@@ -1,10 +1,13 @@
 {
   "name": "smart_watches_online_shop",
   "version": "1.0.0",
+  "homepage": "https://alexandrachupryna.github.io/smart_watches_online_store/",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot"
+    "dev": "webpack-dev-server --inline --hot",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages d- build"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +18,8 @@
     "babel-loader": "^8.0.6",
     "babel-preset-env": "^1.7.0",
     "webpack": "^4.41.2"
+  },
+  "dependencies": {
+    "gh-pages": "^2.1.1"
   }
 }
