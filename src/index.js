@@ -23,7 +23,6 @@ function getListOfGoods() {
             const goodsItemForm = document.getElementById('goodsItemForm');
             goodsItemForm.addEventListener('submit', submitCreateForm);
             const changeItemButtons = document.querySelectorAll('.changeItem');
-            console.log(changeItemButtons);
             for(const button of changeItemButtons) {
                 button.addEventListener('click', openFormChange);
             }
