@@ -1,0 +1,9 @@
+#client {
+    display: none;
+}
+
+.goods_p {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

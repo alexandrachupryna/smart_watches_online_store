@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Online Shop</title>
+    <script src="https://kit.fontawesome.com/0d5775b5f6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+    <header class="container mt-5 mb-5">
+        <h1 class="text-center mb-5">Smart Watches Online Shop</h1>
+        <div class="d-flex justify-content-between">
+            <button id="adminButton" type="button" class="btn btn-outline-secondary">Admin</button>
+            <button id="clientButton" type="button" class="btn btn-outline-secondary">Client</button>
+        </div>
+    </header>
+    <div id="app" class="container"></div>
+    <div class="modal fade" id="goodsItemFormModal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form id="goodsItemForm" class="container">
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-3 col-form-label">Name:</label>
+                            <input id="name" type="text" class="col-sm-9 form-control" required>
+                        </div>
+                        <div class="form-group row">
+                            <label for="price" class="col-sm-3 col-form-label">Price:</label>
+                            <input id="price" class="col-sm-9 form-control" type="number" placeholder="0.00" required min="0" value="0" step="0.01" pattern="^\d+(?:\.\d{1,2})?$" onblur="
+                            this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'red'">
+                        </div>
+                        <div class="form-group row">
+                            <label for="available" class="col-sm-3 col-form-label">Is available?</label>
+                            <input type="checkbox" class="col-sm-9 form-control" name="available" id="available">
+                        </div>
+                        <div class="form-group row">
+                            <label for="image" class="col-sm-3 col-form-label">Image:</label>
+                            <input id="image" class="col-sm-9 form-control" type="text">
+                        </div>
+                        <div class="form-group row">
+                            <label for="desc" class="col-sm-3 col-form-label">Description:</label>
+                            <textarea name="desc" class="col-sm-9 form-control" id="desc" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="form-group row d-flex justify-content-between">
+                            <input type="submit" name="submit" value="Submit" id="submitGoodsItem" class="btn btn-outline-secondary col-sm-5">
+                            <input type="reset" value="Reset" class="btn btn-outline-secondary col-sm-5">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="changeItemFormModal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form id="changeItemForm" class="container">
+                        <div class="form-group row">
+                            <label for="changeName" class="col-sm-3 col-form-label">Name:</label>
+                            <input id="changeName" type="text" class="col-sm-9 form-control" required>
+                        </div>
+                        <div class="form-group row">
+                            <label for="changePrice" class="col-sm-3 col-form-label">Price:</label>
+                            <input id="changePrice" class="col-sm-9 form-control" type="number" required min="0" step="0.01" pattern="^\d+(?:\.\d{1,2})?$" onblur="
+                            this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'red'">
+                        </div>
+                        <div class="form-group row">
+                            <label for="changeAvailable" class="col-sm-3 col-form-label">Is available?</label>
+                            <input type="checkbox" class="col-sm-9 form-control" name="changeAvailable" id="changeAvailable">
+                        </div>
+                        <div class="form-group row">
+                            <label for="changeImage" class="col-sm-3 col-form-label">Image:</label>
+                            <input id="changeImage" class="col-sm-9 form-control" type="text">
+                        </div>
+                        <div class="form-group row">
+                            <label for="changeDesc" class="col-sm-3 col-form-label">Description:</label>
+                            <textarea name="desc" class="col-sm-9 form-control" id="changeDesc" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="form-group row d-flex justify-content-between">
+                            <input type="submit" name="submit" value="Submit" id="submitChange" class="btn btn-outline-secondary col-sm-5">
+                            <input type="reset" value="Reset" class="btn btn-outline-secondary col-sm-5">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="shoppingCartModal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="text-center mx-auto">Shopping Cart</h3>
+                </div>
+                <div class="modal-body">
+                    <div id="shoppingCart" class="shoppingCart">
+                        <div class="empty text-center">Add new goods to the shopping cart.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="build/bundle.js"></script>
+</body>
+</html>
